@@ -17,6 +17,13 @@ public class TouchZone : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     private Vector2 m_BeginDragPosition;
 
+    public float Power;
+
+    public void Reset()
+    {
+        m_JoystickImage.gameObject.SetActive(false);
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         IsDrag = true;
@@ -34,6 +41,8 @@ public class TouchZone : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         var delta = eventData.position - m_BeginDragPosition;
         delta = Vector2.ClampMagnitude(delta, 40);
         rectT.anchoredPosition = delta;
+
+        Power = delta.magnitude / 40;
     }
 
     public void OnEndDrag(PointerEventData eventData)
