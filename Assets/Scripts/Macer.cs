@@ -74,6 +74,19 @@ public class Macer : MonoBehaviour
             m_Mace.position,
         };
         LineRenderer.SetPositions(points);
+
+
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        var coin = other.GetComponent<Coin>();
+        if (coin)
+        {
+            var dist = (transform.position - coin.transform.position);
+            coin.transform.position += dist / 6;
+            if (dist.magnitude <= 0.3f) coin.Collected();
+        }
     }
 
     private void OnDragBegin(PointerEventData pointerEvent)
@@ -103,9 +116,9 @@ public class Macer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Bad")
-        {
-            OnKill?.Invoke();
-        }
+        // if (other.gameObject.tag == "Bad")
+        // {
+        OnKill?.Invoke();
+        // }
     }
 }

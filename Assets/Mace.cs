@@ -19,5 +19,12 @@ public class Mace : MonoBehaviour
     private void OnCollisionStay2D(Collision2D other)
     {
         // m_RateOverTime = 20;
+        var enemy = other.gameObject.GetComponent<Enemy>();
+        if (enemy)
+        {
+            enemy.Kill();
+        }
+
+        
     }
 }
