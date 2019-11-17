@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     public Vector2 CoinsRandom;
 
-    public void Kill()
+    public void Kill(bool reward = true)
     {
         IsKilled = true;
 
@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
             var coin = Instantiate(GameController.Instance.CoinPrefab);
             coin.transform.position = transform.position;
         }
+        GameController.Instance.AddDieFX(transform.position);
         Destroy(gameObject, 0);
     }
 }

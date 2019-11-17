@@ -17,6 +17,7 @@ public class Macer : MonoBehaviour
     [SerializeField] private TouchZone m_TouchZone;
     [SerializeField] private Transform m_Mace;
     [SerializeField] private CinemachineVirtualCamera m_VCam;
+    [SerializeField] private GameObject m_DieEffect;
 
     [SerializeField] private float m_MaxMoveForce = 10;
     [SerializeField] private float m_Friction = 1;
@@ -119,6 +120,8 @@ public class Macer : MonoBehaviour
         // if (other.gameObject.tag == "Bad")
         // {
         OnKill?.Invoke();
+        GameController.Instance.AddDieFX(transform.position);
+        gameObject.SetActive(false);
         // }
     }
 }

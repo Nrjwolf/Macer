@@ -257,6 +257,7 @@ MonoBehaviour:
   CoinsRandom: {x: 10, y: 20}
   m_Pushka: {fileID: 4390203333932909674}
   m_FirePoint: {fileID: 5812034772374993343}
+  m_FirePower: 0.001
 --- !u!1 &4522347566634830277
 GameObject:
   m_ObjectHideFlags: 0
